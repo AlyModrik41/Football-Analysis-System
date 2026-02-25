@@ -1,0 +1,26 @@
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.txt
+
+# Data folders
+training/
+data/
+datasets/
+stubs/
+input_videos/
+output_videos/
+
+# Models
+models/
+*.pt
+*.pkl
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# YOLO runs folder
+runs/
