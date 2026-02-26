@@ -33,9 +33,13 @@ class CameraMovementEstimator():
 
     def add_adjust_positions_to_tracks(self,tracks,camera_movement_per_frame):
         for object,object_tracks in tracks.items():
+            if object == 'pitch':
+                continue
             for frame_num,track in enumerate(object_tracks):
-                for tracks_id,track_info in tracks.items():
-                    position=track_info['position']
+                for tracks_id,track_info in track.items():
+                    position=track_info.get('position',None)
+                    if position is None:
+                        continue
                     camera_movement=camera_movement_per_frame[frame_num]
                     position_adjusted=(position[0]-camera_movement[0],
                                        position[1]-camera_movement[1])
