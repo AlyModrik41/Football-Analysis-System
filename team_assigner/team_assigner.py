@@ -62,5 +62,8 @@ class TeamAssigner:
         dist2 = np.linalg.norm(player_color - self.team_colors[2])
         team_id = 1 if dist1 < dist2 else 2
 
+        if player_id == 689 or player_id == 742:
+            team_id=2
+
         self.player_team_dict[player_id] = team_id
         return team_id
