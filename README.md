@@ -19,13 +19,9 @@ https://github.com/user-attachments/assets/7b5eec68-17be-46fd-81c2-32234e078af4
 <!-- Add your screenshots here -->
 | Team Color Detection (KMeans) | Radar Minimap | Speed Overlay |
 |:---:|:---:|:---:|
-|(<img width="305" height="369" alt="image" src="https://github.com/user-attachments/assets/c4fbde6c-1027-4e7a-a910-065afbb5b260" />
-<img width="305" height="369" alt="image" src="https://github.com/user-attachments/assets/c4fbde6c-1027-4e7a-a910-065afbb5b260" />
-) | ![radar](<img width="380" height="227" alt="image" src="https://github.com/user-attachments/assets/82d6dabd-ccff-4b53-adc1-410d92bb795a" />
-<img width="380" height="227" alt="image" src="https://github.com/user-attachments/assets/82d6dabd-ccff-4b53-adc1-410d92bb795a" />
-) | ![speed](<img width="164" height="132" alt="image" src="https://github.com/user-attachments/assets/d8d44274-80e8-4922-b8e0-fc60d9b35b99" />
-<img width="164" height="132" alt="image" src="https://github.com/user-attachments/assets/d8d44274-80e8-4922-b8e0-fc60d9b35b99" />
-) |
+|<img width="305" height="369" alt="image" src="https://github.com/user-attachments/assets/c4fbde6c-1027-4e7a-a910-065afbb5b260" />
+| <img width="380" height="227" alt="image" src="https://github.com/user-attachments/assets/82d6dabd-ccff-4b53-adc1-410d92bb795a" />
+| <img width="164" height="132" alt="image" src="https://github.com/user-attachments/assets/d8d44274-80e8-4922-b8e0-fc60d9b35b99" />
 
 ---
 
