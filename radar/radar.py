@@ -51,14 +51,16 @@ class Radar:
                 continue
 
             radar_pos=self.transform_to_radar(position)
+            alpha=0.6
 
             team=player.get('team',0)
             color=player.get('team_color',(200,200,200))
             color=tuple(map(int, color))
 
-
+            overlay=frame.copy()
             cv2.circle(radar, radar_pos, 5, color, -1)
             # cv2.circle(radar, radar_pos, 5, (0,0,0), 1)
+            cv2.addWeighted(overlay,alpha,frame,0.4,0,frame)
 
             if player.get('has_ball'):
                 cv2.circle(radar, radar_pos, 8, (255,255,0),2)
@@ -82,7 +84,7 @@ class Radar:
                       (self.x_start-5, self.y_start-5),
                       (self.x_start+self.width+5,self.y_start+self.height+5),
                       (0,0,0),-1)
-        cv2.addWeighted(overlay,0.7,frame,0.3,0,frame)
+        cv2.addWeighted(overlay,0.6,frame,0.4,0,frame)
 
         frame[self.y_start:self.y_start+self.height,
               self.x_start:self.x_start+self.width]=radar

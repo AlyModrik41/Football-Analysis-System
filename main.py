@@ -6,15 +6,17 @@ from team_assigner import TeamAssigner
 import os
 import pickle
 import numpy as np
+from stable_tracker import StableTracker
 from player_ball_assigner import PlayerBallAssigner
 from camera_movement_estimator import CameraMovementEstimator
 from view_transformer import ViewTransformer
 from speed_and_distance_estimator import SpeedAndDistanceEstimator
 from radar import Radar
 from export_csv_stats import export_player_statistics, export_team_statistics
+from stable_tracker import StableTracker
 
 def main():
-    video_frames = read_video(r'input_videos\A1606b0e6_0 (10).mp4')
+    video_frames = read_video(r'input_videos/D35bd9041_1 (27).mp4')
 
     tracker = Tracker(
         player_model_path='models/football-player-detection.pt',
@@ -49,10 +51,22 @@ def main():
             del chunk_frames, chunk_tracks
     
     tracks = all_tracks
+    
+    stable_tracker=StableTracker(max_distance=80, max_lost=60)
+    for frame_num in range(len(tracks['players'])):
+        tracks['players'][frame_num]=stable_tracker.update(
+            tracks['players'][frame_num]
+        )
+    all_ids=set()
+    for frame in tracks['players']:
+        for track_id in frame.keys():
+            all_ids.add(track_id)
+    print(f"Unique Player IDs after stable Tracker:")
 
     tracks['ball'] = tracker.interpolate_ball_positions(tracks['ball'],max_gap=3,max_jump=250)
 
     tracker.add_position_to_tracks(tracks)
+    # Add in main.py right after loading/generating tracks
 
     camera_movement_estimator=CameraMovementEstimator(video_frames[0])
     camera_movement_per_frame=camera_movement_estimator.get_camera_movement(video_frames,
@@ -84,9 +98,12 @@ def main():
             team = team_assigner.get_player_team(
                 video_frames[frame_num], track['bbox'], player_id
             )
-            tracks['players'][frame_num][player_id]['team'] = team
-            tracks['players'][frame_num][player_id]['team_color'] = team_assigner.team_colors[team]
-
+            # if player_id == 15:
+            #     tracks['players'][frame_num][player_id]['team']=2
+            #     tracks['players'][frame_num][player_id]['team_color'] = team_assigner.team_colors[2]
+            # else:
+            tracks['players'][frame_num][player_id]['team']=team
+            tracks['players'][frame_num][player_id]['team_color']=team_assigner.team_colors[team]
     # Ball assignment
     player_assigner = PlayerBallAssigner()
     team_ball_control=[]
@@ -108,7 +125,7 @@ def main():
     radar=Radar()
 
     # Draw and save directly — no RAM spike
-    tracker.draw_annotations(video_frames, tracks, 'output_videos/output_video.avi',
+    tracker.draw_annotations(video_frames, tracks, 'output_videos/output_video_2.avi',
                              team_ball_control,camera_movement_per_frame,radar=radar)
 
     export_player_statistics(tracks)

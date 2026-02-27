@@ -12,7 +12,7 @@ def export_player_statistics(tracks,output_dir=r'C:\Users\Ali\football project\S
             if player_id not in player_stats:
                 player_stats[player_id]={
                     'team':data.get('team',0),
-                    'total_distance':0,
+                    'distance_covered':0,
                     'speed_sum':0,
                     'speed_count':0,
                     'ball_touches':0
@@ -23,7 +23,7 @@ def export_player_statistics(tracks,output_dir=r'C:\Users\Ali\football project\S
 
             if 'speed' in data:
                 player_stats[player_id]['speed_sum']+=data['speed']
-                player_stats[player_id]['speed_sum']+=1
+                player_stats[player_id]['speed_count']+=1
             if data.get('has_ball',False):
                 player_stats[player_id]['ball_touches']+=1
 
@@ -50,9 +50,9 @@ def export_team_statistics(tracks,output_dir=r'C:\Users\Ali\football project\Sta
     os.makedirs(output_dir,exist_ok=True)
 
     team_stats={
-        0:{'possession_frames':0},
-        1:{'possession_frames':0},
-        2:{'possession_frames':0}
+        0:0,
+        1:0,
+        2:0
     }
 
     total_frames=len(tracks['players'])
