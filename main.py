@@ -1,4 +1,4 @@
-
+import sys
 from utils import read_video
 from trackers import Tracker
 from utils import get_center_of_bbox, get_bbox_width
@@ -11,6 +11,7 @@ from camera_movement_estimator import CameraMovementEstimator
 from view_transformer import ViewTransformer
 from speed_and_distance_estimator import SpeedAndDistanceEstimator
 from radar import Radar
+from export_csv_stats import export_player_statistics, export_team_statistics
 
 def main():
     video_frames = read_video(r'input_videos\A1606b0e6_0 (10).mp4')
@@ -67,12 +68,12 @@ def main():
 
     speed_and_distance_estimator=SpeedAndDistanceEstimator()
     speed_and_distance_estimator.add_speed_and_distance_to_tracks(tracks)
-    # Add in main.py after speed calculation
+   
     for frame_num, track in enumerate(tracks['players'][:10]):
         for track_id, track_info in track.items():
             pos = track_info.get('position_transformed', None)
             speed = track_info.get('speed', None)
-            print(f"Frame {frame_num}, Player {track_id}: pos={pos}, speed={speed}")
+            
 
     # Team assignment
     team_assigner = TeamAssigner()
@@ -110,6 +111,10 @@ def main():
     tracker.draw_annotations(video_frames, tracks, 'output_videos/output_video.avi',
                              team_ball_control,camera_movement_per_frame,radar=radar)
 
+    export_player_statistics(tracks)
+    export_team_statistics(tracks)
+
+    return tracks
 
 
 if __name__ == '__main__':

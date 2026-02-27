@@ -3,14 +3,14 @@ import cv2
 
 class ViewTransformer():
     def __init__(self):
-        court_width=68
-        court_length=70
+        court_width=75
+        court_length=80
 
         self.pixel_vertices = np.array([
-        [729,  62],    # top-left
-        [1194, 78],    # top-right
-        [1371, 1035],  # bottom-right
-        [8,    956]   
+         [300,  62],    # top-left
+        [1900, 95],    # top-right
+        [1700, 970],  # bottom-right
+        [8,    956]    # 
         ])
 
         self.target_vertices=np.array([

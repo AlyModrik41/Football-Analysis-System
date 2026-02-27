@@ -10,8 +10,8 @@ class Radar:
         self.margin=20
 
         # Pitch Dimensions (Real-World)
-        self.court_width=68
-        self.court_length=70
+        self.court_width=75
+        self.court_length=80
 
         self.x_start=760
         self.y_start=840

@@ -5,10 +5,10 @@ from utils import read_video
 frame = read_video(r'input_videos\A1606b0e6_0 (10).mp4')[0]
 
 pixel_vertices = np.array([
-[100,  80],   # top-left    — far touchline, left side
-[1820, 95],   # top-right   — far touchline, right side  
-[1900, 970],  # bottom-right — near touchline, right side
-[20,   960]   # bottom-left  — near touchline, left side 
+   [300,  62],    # top-left
+        [1900, 95],    # top-right
+        [1700, 970],  # bottom-right
+        [8,    956]   
 ], dtype=np.int32)
 
 cv2.polylines(frame, [pixel_vertices], isClosed=True, color=(0,255,0), thickness=3)

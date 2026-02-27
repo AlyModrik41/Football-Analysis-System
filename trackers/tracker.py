@@ -23,7 +23,12 @@ class Tracker:
         else:
             self.pitch_model = None
             
-        self.tracker = sv.ByteTrack()
+        self.tracker = sv.ByteTrack(
+            track_activation_threshold=0.25,
+            lost_track_buffer=30,
+            minimum_matching_threshold=0.8,
+            frame_rate=25
+            )
 
     def add_position_to_tracks(self,tracks):
         for object, object_tracks in tracks.items():
