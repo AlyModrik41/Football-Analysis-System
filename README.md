@@ -296,7 +296,7 @@ All models are **YOLOv8x** (~140MB) trained by [Roboflow](https://roboflow.com) 
 |-------|---------|-------|
 | `football-player-detection.pt` | player, goalkeeper, referee | mAP50 ~0.98 |
 | `football-ball-detection.pt` | ball | mAP50 ~0.85 |
-| `football-pitch-detection.pt` | pitch keypoints | optional |
+| `football-pitch-detection.pt` | pitch keypoints | mAP50 ~0.995 |
 
 ---
 
