@@ -37,7 +37,8 @@ https://github.com/user-attachments/assets/e87c8d53-11e5-4aab-86e3-d5c21711ea5a
 
 | KMeans Team Assignment | Ball Possession Stats | Top-Down View Transform |
 |:---:|:---:|:---:|
-| <img width="308" height="363" alt="image" src="https://github.com/user-attachments/assets/29ae5d16-fc2e-4275-9be2-f0a6e870b771" /> | <img width="495" height="128" alt="image" src="https://github.com/user-attachments/assets/28d74298-5b18-4f8d-8fe5-f8ce3b46b397" /> | https://github.com/user-attachments/assets/a695f3eb-6534-49c0-9800-16be6955fe8d 
+| <img width="308" height="363" alt="image" src="https://github.com/user-attachments/assets/29ae5d16-fc2e-4275-9be2-f0a6e870b771" /> | <img width="495" height="128" alt="image" src="https://github.com/user-attachments/assets/28d74298-5b18-4f8d-8fe5-f8ce3b46b397" /> | ![vertices_visualization](https://github.com/user-attachments/assets/48f87d11-dfac-434f-ad7d-d6c05103dc33)
+
 
 </div>
 
