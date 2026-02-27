@@ -246,7 +246,7 @@ class Tracker:
         cv2.drawContours(frame, [triangle_points], 0, (0, 0, 0), 2)
         return frame
 
-    def draw_annotations(self, video_frames, tracks, output_path,team_ball_control,camera_movement_per_frame):
+    def draw_annotations(self, video_frames, tracks, output_path,team_ball_control,camera_movement_per_frame,radar=None):
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
         height, width = video_frames[0].shape[:2]
         out = cv2.VideoWriter(output_path, fourcc, 25.0, (width, height))
@@ -272,6 +272,10 @@ class Tracker:
             
             frame=self.draw_team_ball_control(frame,frame_num,team_ball_control)
 
+            if radar is not None:
+                frame=radar.draw_radar(frame, tracks, frame_num,{})
+
+
 
             if camera_movement_per_frame is not None:
                 overlay=frame.copy()
@@ -280,9 +284,28 @@ class Tracker:
                 cv2.addWeighted(overlay,alpha,frame,1-alpha,0,frame)
                 x_movement,y_movement=camera_movement_per_frame[frame_num]
                 frame=cv2.putText(frame,f"Camera Movement X: {x_movement:.2f}",(10,30),
-                                cv2.FONT_HERSHEY_SCRIPT_COMPLEX,1,(0,0,0),3)
+                                cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),3)
                 frame=cv2.putText(frame,f"Camera Movement Y: {y_movement:.2f}",(10,60),
-                                cv2.FONT_HERSHEY_SCRIPT_COMPLEX,1,(0,0,0),3)
+                                cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),3)
+                
+            for object, object_tracks in tracks.items():
+                if object =='ball'or object=='referee' or object=='pitch':
+                    continue
+                for track_id, track_info in object_tracks[frame_num].items():
+                    if 'speed' in track_info:
+                        speed=track_info.get('speed',None)
+                        distance=track_info.get('distance',None)
+                        if speed is None or distance is None:
+                            continue
+                        bbox=track_info['bbox']
+                        position=get_foot_position(bbox)
+                        position=list(position)
+                        position[1]+=40
+
+                        position=tuple(map(int,position))
+                        cv2.putText(frame,f"{speed:.2f} km/h", position,cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
+                        cv2.putText(frame,f"{distance:.2f} m", (position[0],position[1]+15),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
+                
 
             out.write(frame)
             del frame
