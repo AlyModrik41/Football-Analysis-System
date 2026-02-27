@@ -10,8 +10,6 @@
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green?style=for-the-badge&logo=opencv)](https://opencv.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-[Demo Video](#demo) · [Features](#features) · [Quick Start](#quick-start) · [Architecture](#architecture) · [Configuration](#configuration)
-
 </div>
 
 ---
