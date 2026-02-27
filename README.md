@@ -12,10 +12,6 @@ A production-grade computer vision pipeline that analyzes broadcast football foo
 https://github.com/user-attachments/assets/7b5eec68-17be-46fd-81c2-32234e078af4
 
 
-
-https://github.com/user-attachments/assets/7b5eec68-17be-46fd-81c2-32234e078af4
-
-
 ---
 
 ## 🖼️ Screenshots
