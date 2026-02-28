@@ -21,7 +21,9 @@
   <img src="assets/demo.gif" alt="Football Analysis Demo" width="900"/>
 </div>
 
-https://github.com/user-attachments/assets/e87c8d53-11e5-4aab-86e3-d5c21711ea5a
+
+https://github.com/user-attachments/assets/334e5ba0-6e2e-40e5-bc3a-978d17ba1fd4
+
 
 ---
 
